@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre Site</title>
+    <style>
+        /* Styling pour la barre en haut et l'horloge */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 40%;
+            width: 100%;
+            text-align: right;
+            padding: 0;
+            font-size: 18px;
+			 transform: translateX(-50%); /* Ajuste la position pour centrer */
+			  width: 10; /* Ajuste la largeur automatiquement en fonction du contenu */
+			right: 90; /* Positionne la barre à droite */
+             display: inline-block;
+            background-color: #fff; /* Couleur de fond blanche */
+            padding: 0px 30px;
+            border-radius: 50px; /* Bords arrondis */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet de relief */				
+        }
+		
+	
+
+        /* Ajoutez d'autres styles communs ici */
+    </style>
+</head>
+<body>
+
+    <!-- Horloge en haut -->
+    <div class="top-bar" id="clock"></div>
+
+    <!-- Contenu de la page -->
+    <div id="content">
+        <!-- Le contenu de chaque page ira ici -->
+    </div>
+
+    <!-- Script pour l'horloge -->
+    <script type="text/javascript">
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Formatage pour ajouter un zéro devant les nombres < 10
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            // Affichage de l'horloge
+            document.getElementById('clock').innerHTML = hours + ':' + minutes + ':' + seconds;
+
+            // Actualisation toutes les secondes
+            setTimeout(updateClock, 1000);
+        }
+
+        // Démarrer l'horloge
+        updateClock();
+    </script>
+
+</body>
+</html>

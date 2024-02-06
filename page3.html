@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1: Mathématiques</title>
+    <style>
+        /* Ajoutez vos styles CSS ici */
+       body {
+           font-family: 'Dancing Script', cursive, 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+			background-image: url('https://cdn.futura-sciences.com/sources/images/dossier/2030/01-intro-2030.jpg');
+            background-size: small;
+            background-position: center;
+            background-repeat: no-repeat;
+			
+			}
+			
+			 #retour-link {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            background-color: #0074D9;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 1001; /* Pour s'assurer que le lien est au-dessus du contenu */
+			 border: 2px solid black; /* Ajout d'une bordure noire */
+        }
+
+        header {
+            background-color: #0074D9;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+          
+		    section:hover {
+            max-width: 480px; /* Rétrécit la section au survol */
+        }
+        
+		
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			 transition: all 0.5s ease; /* Ajout d'une transition pour l'animation */
+        }
+        
+
+        h1 {
+            color: #0074D9;
+			 color: white;
+            font-size: 60px; /* Ajuste la taille du titre */
+            transition: all 0.5s ease; /* Ajout d'une transition pour l'animation */
+        }
+        
+         section:hover h1 {
+           font-size: 36px; /* Rétrécit la taille du titre au survol */
+        }
+		
+        p {
+            line-height: 1.6;
+			  color: white;
+        }
+		
+			footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+			 border-radius: 10px;
+			}
+    </style>
+</head>
+<body>
+ <header>
+  <a id="retour-link" href="javascript:history.back()">Retour à la page d'acceuil</a>
+  
+        <img src="https://1.bp.blogspot.com/-Yd0az73rWYM/XrVMH8aIMDI/AAAAAAAAHWk/V2vxWfdcSxQjkJrbPrcv7VDQYZqK15gHgCLcBGAsYHQ/s1600/g1.PNG" alt="Logo">
+        <h1>Math et Sciences !</h1>
+    </header>
+    
+
+    <section>
+        <p>Bienvenue sur la première page consacrée aux mathématiques. Les mathématiques sont une discipline passionnante qui explore la logique, les modèles, et les structures abstraites.</p>
+        <img src="https://example.com/math-image.jpg" alt="Math Image" width="800" height="400">
+        <p>Dans cette section, nous aborderons divers concepts mathématiques, des formules fondamentales aux théories avancées. Explorez et découvrez le monde fascinant des mathématiques.</p>
+        <p>Pour en savoir plus, consultez également notre <a href="page2.html">deuxième page</a> sur l'importance des mathématiques.</p>
+    </section>
+	<footer>
+<div class="pagination">
+	<div class="pagination a">
+    <a href="#" class="arrow">&lt;</a>
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#" class="arrow">&gt;</a>
+	<div style="text-align: center; margin: 20px;">
+    <span style="font-size: 24px;">&larr; <!-- Flèche gauche --> </span>
+    <span>Page suivante</span>
+    <span style="font-size: 24px;">&rarr; <!-- Flèche droite --> </span>
+</div>
+   </footer>
+    <!-- Ajoutez d'autres sections ou du contenu ici -->
+
+</body>
+</html>

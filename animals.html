@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics and physics </title>
+	  <link rel="stylesheet" href="clock.css">
+	   <link rel="stylesheet" href="reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="reveal.js/dist/theme/black.css">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
+	<link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/moon.css" id="theme">
+	<link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">	
+    <style>
+	
+	#title-bar {
+    text-align: center;
+    padding: 10px;
+      background: linear-gradient(to right, #fff, #0074D9); /* Dégradé de violet à bleu */
+    color: #fff;
+    border-bottom: 2px solid #fff; /* Ajoutez une bordure en bas de la barre de titre */
+    z-index: 1000; /* Assurez-vous que le titre est au-dessus du contenu */
+	 color: black; 
+	  border-radius: 10px; /* Ajout d'une bordure arrondie en bas */
+}
+
+
+	#top-bar ,  #left-bar {
+    position: fixed;
+    top: 0;
+    left: 10;
+    width: 100%;
+    background: linear-gradient(to right, #fff, #0074D9, #8A2BE2); /* Blanc, Bleu, Violet */
+    color: #fff;
+    z-index: 1001; /* Assurez-vous que la barre est au-dessus du contenu */
+    padding: 10px; /* Ajoutez de l'espace autour du texte dans la barre */
+	 position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #fff, #0074D9, #8A2BE2);
+    color: #fff;
+    z-index: 1001;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Ajoutez cette ligne pour espacer les éléments */
+}
+
+  #left-bar {
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(to bottom, #fff, #0074D9, #8A2BE2);
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+  #left-bar a, #top-bar a {
+            color: inherit;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        #clock.top-bar-clock {
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+/* Supprimez le style de l'horloge */
+    #clock {
+    display: none;
+	position: fixed;
+            top: 0;
+            left: 40%;
+            width: 100%;
+            text-align: right;
+            padding: 0;
+            font-size: 18px;
+			 transform: translateX(-50%); /* Ajuste la position pour centrer */
+			  width: 10; /* Ajuste la largeur automatiquement en fonction du contenu */
+			right: 90; /* Positionne la barre à droite */
+             display: inline-block;
+			 position: fixed;
+            font-size: 18px;
+            background-color: #fff; /* Couleur de fond blanche */
+            padding: 0px 30px;
+            border-radius: 50px; /* Bords arrondis */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet de relief */	
+			color : black
+            
+}
+
+ #map-container {
+            margin-top: 60px; /* Ajuster en fonction de la taille de votre barre supérieure */
+            width: 100%;
+            height: 400px; /* Ajuster la hauteur de la carte selon vos besoins */
+			  
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+		
+	.search input[type=text] {
+    width: 270px; /* Vous pouvez ajuster cette valeur selon vos préférences */
+    height: 15px;
+    border-radius: 25px;
+    border: none;
+    padding: 5px;
+}
+	
+	  body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #060a1f;
+            margin: 0;
+        }
+
+    
+
+
+.sidebar-link {
+    background: #444;
+    margin: 5px 0;
+    border-radius: 5px; /* Ajout de coins arrondis */
+	  width: 100%; /* Remplit la largeur disponible */
+}
+
+        #sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        #clock {
+            color: #fff;
+            text-align: center;
+            z-index: 1; /* Ajout de la propriété z-index */
+            position: relative; /* Ajout de la position relative */
+            margin-left: 80px; /* Ajout de la marge pour laisser de la place au sidebar */
+          top: 10px;
+          right: 10px;
+          z-index: 1000; /* Pour s'assurer que l'horloge est au-dessus du contenu */
+		  
+        }
+		
+		#clock.top-bar-clock {
+    font-size: 18px;
+    color: #ffffff;
+    margin-right: 20px; /* Ajoutez une marge à droite pour espacer de la bordure */
+}
+
+        #clock h2 {
+            color: #fff;
+            text-align: center;
+            margin: 10px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            font-size: 0.8em;
+        }
+
+        #clock #time {
+            display: flex;
+            justify-content: center;
+        }
+
+        #clock #time div {
+            position: relative;
+            margin: 0 5px;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+        }
+
+        #clock #time div span {
+            position: relative;
+            display: block;
+            width: 100px;
+            height: 80px;
+            background: #2196f3;
+            color: #fff;
+            font-weight: 300;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+            z-index: 10;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+        }
+
+        #clock #time div span:nth-child(2) {
+            height: 30px;
+            font-size: 0.7em;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            z-index: 9;
+            box-shadow: none;
+            background: #127fd6;
+            text-transform: uppercase;
+        }
+
+        #clock #time div:nth-last-child(2) span {
+            background: #ec0062;
+        }
+
+        #clock #time div:nth-last-child(2) span {
+            background: #ec0062;
+        }
+
+        #clock #time div:nth-last-child(1) span {
+            position: absolute;
+            bottom: 0;
+            width: 60px;
+            height: 40px;
+            font-size: 1.5em;
+            background: #fff;
+            color: #000;
+        }
+
+        /* Ajout de la propriété z-index à l'image */
+        #background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Style pour les liens rapides dans le sidebar */
+        .sidebar-link {
+            background: #444;
+            margin: 5px 0;
+        }
+	
+	        #retour-link {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            background-color: #0074D9;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 1001; /* Pour s'assurer que le lien est au-dessus du contenu */
+			 border: 2px solid black; /* Ajout d'une bordure noire */
+        }
+
+	    
+	     /* Styling navlist */
+        #navlist {
+            background-color: #0074D9;
+            position: fixed;
+			bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            z-index: 1000; /* Pour s'assurer que la barre de navigation est au-dessus du contenu */			 
+        }
+
+
+
+           .section-wrapper {
+            border-radius: 10px;			 
+            overflow: hidden;
+            margin-bottom: 10px;
+			 background-color: dark; /* Fond blanc */
+    border-radius: 10px; /* Bordure arrondie */
+    padding: 20px; /* Espace à l'intérieur du rectangle */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1.1); /* Ombre légère */
+    margin-bottom: 70px; /* Espacement entre les sections */
+	background-image: url('https://th.bing.com/th/id/OIP.YweVNSeMzhusQ1W0_sSgWQHaEK?rs=1&pid=ImgDetMain');
+        }
+		
+        /* Styling navlist anchor element */
+        #navlist a {
+            color: #f2f2f2;
+            text-decoration: none;
+            font-size: 15px;
+            margin-right: 20px;
+			  padding: 10px; /* Ajout d'une marge intérieure pour encadrer */
+            border: 1px solid #f2f2f2; /* Ajout d'une bordure */
+            border-radius: 5px; /* Ajout d'une bordure arrondie */
+			 cursor: pointer;
+        }
+
+        #navlist a:hover {
+            color: black;
+        }
+
+        /* Styling search bar */
+        .search input[type=text] {
+            width: 300px;
+            height: 25px;
+            border-radius: 25px;
+            border: none;
+            padding: 5px;
+        }
+
+        .search button {
+            background-color: #0074D9;
+            color: #f2f2f2;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Additional styling for the logo and content */
+        .content {
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 60px; /* Pour éviter que le contenu ne soit caché sous la barre de navigation */
+        }
+
+        /* Adjusted space between title and search bar */
+        header {
+            margin-bottom: 20px;
+        }
+		
+		
+	body {
+           font-family: 'Dancing Script', cursive, 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+			background-image: url('https://c.wallhere.com/photos/32/43/1920x1080_px_Simple_Background-1207160.jpg!d');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+			 animation: fadeIn 1s ease-out;
+			  animation-fill-mode: forwards; /* Garantit que l'élément reste dans l'état final de l'animation */
+			 border-top-right-radius: 10px; /* Coin arrondi en haut à droite */
+			  
+			  
+			   
+			 
+			 }
+			 
+			 #main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            font-size: 2em;
+        }
+			 
+			 
+		
+        header {
+            background-color: #444;
+            color: white;
+            padding: 1em;
+            text-align: center;
+			 display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+		
+         header img {
+            margin-right: 50px;
+            max-height: 100px; /* Ajustez la hauteur maximale selon vos préférences */
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ddd;
+            padding: 1em;
+			
+			   .nav-link-container {
+			    margin-bottom: 10px; /* Ajoutez l'espace souhaité entre les liens */
+            margin: 0.5em;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        .nav-link-container a {
+            display: block;
+            padding: 5px;
+            text-decoration: none;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .nav-link-container:hover {
+            background-color: #333; /* Change la couleur au survol */
+        }
+
+        .grid-container {
+		 margin-bottom: 10px; /* Ajoutez l'espace souhaité entre les liens */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Deux colonnes pour le texte de chaque page */
+            gap: 20px; /* Espacement entre les colonnes */
+            padding: 20px;
+        }
+
+        }
+
+        nav a {
+            margin: 0 1em;
+            text-decoration: none;
+            color: #333;
+			
+        }
+		
+		  .presentation-section {
+            background-color: #0074D9; /* Couleur du rectangle de présentation */
+            color: white;
+            padding: 40px;
+            text-align: center;
+			
+			}
+		
+           
+			
+        section {
+		   position: relative;
+            padding: 1em;
+            margin-bottom: 20px; /* Espacement entre les sections */
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr ; /* Deux colonnes pour le texte et les images */
+            gap: 20px; /* Espacement entre les colonnes */
+			 margin-top: 10px;
+			 font-size: 25px;
+			  color: #333
+			 background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);			
+			 background-size: cover;
+    background-position: center;
+	background-color: rgba(255, 255, 255, 0.8); /* Fond blanc transparent */
+			
+        }
+          section img {
+		 width: 400px;
+            height: 250px;
+            border-radius: 10px; /* Ajout de coins arrondis */
+			 width: 100%; /* Ajustement pour remplir la largeur de la colonne */
+	     width: 100%; /* Ajuster la largeur à 100% pour qu'elle soit réactive */
+    max-width: 100%; /* S'assurer que l'image ne dépasse pas de son conteneur */
+    height: auto; /* Ajuster la hauteur de manière proportionnelle à la largeur */
+    border-radius: 10px; /* Ajout de coins arrondis */
+    image-rendering: auto; /* Rendu d'image automatique (peut également utiliser "smooth") */
+}
+		}
+		
+        h1 {
+            color: red;
+			 font-weight: bold; /* Texte en gras */
+        }
+		
+		
+			
+		 p {
+            font-weight: bold; /* Texte en gras */
+        }
+		  .content-container {
+         position: relative;
+          z-index: 1;
+		  overflow: hidden;
+        }
+
+		  .background-rectangle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            opacity: 0.25;
+            z-index: -1;
+			 border: 2px solid green; /* Ajout d'une bordure verte */
+            box-sizing: border-box; /* Inclure la bordure dans la taille totale */
+            border-radius: 10px; /* Ajout de coins arrondis à la bordure */
+        }
+        
+		
+		 .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 30px;
+            height: 0;
+            overflow: hidden;
+			border-radius: 10px;
+			 margin-bottom: 10px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+		 border-radius: 10px; /* Ajout de coins arrondis */
+        }
+		
+		 .video-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .video-col {
+            flex: 0 0 48%; /* Ajustez la largeur des vidéos côte à côte */
+			 margin-bottom: 10px; /* Espacement entre les vidéos */
+        }
+        
+		  .video-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+			 border: 3px solid white;
+			  border-radius: 10px;
+    margin-bottom: 30px; 
+    
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+		
+		footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+			 border-radius: 10px;
+			}
+			
+			.section-wrapper section .text-box {
+    border: 2px solid #333; /* Couleur de la bordure */
+    padding: 10px; /* Espace à l'intérieur de la bordure */
+    border-radius: 10px; /* Coins arrondis de la bordure */
+    margin-bottom: 10px; /* Espacement entre les éléments */
+	color : black;
+}
+
+.section-wrapper section a {
+
+.pagination {
+    text-align: center;
+    margin: 20px;
+	  text-align: center;
+    margin: 20px 0; /* Ajout d'un espacement en haut et en bas */
+}
+.pagination a {
+    display: inline-block;
+    padding: 8px 16px; /* Ajuster le rembourrage selon vos préférences */
+    margin: 0 5px; /* Ajout d'un espacement horizontal entre les éléments */
+    text-decoration: none;
+    color: #0078D4;
+    border: 2px solid #0078D4;
+    border-radius: 5px; /* Bords arrondis */
+}
+
+.pagination .arrow {
+    font-size: 18px;
+}
+
+.pagination .active {
+    background-color: #0078D4;
+    color: white;
+    border: 2px solid #0078D4;
+    border-radius: 5px;
+}
+
+.arrow {
+    font-size: 24px;
+    margin: 0 10px;
+	 text-decoration: none;
+    color: #0074D9;
+}
+.arrow:hover {
+    text-decoration: underline;
+}
+
+.active {
+    background-color: #0078D4;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.startup-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Hauteur de la barre de progression */
+    background-color: #0078D4; /* Couleur de la barre de progression */
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #4CAF50; /* Couleur de la barre de progression animée */
+    animation: progressAnimation 3s ease-out; /* Durée de l'animation et type d'accélération */
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+	
+	.resizable-video {
+    width: 25%;
+    height: auto;
+}
+
+/* Styling pour l'horloge */
+.top-bar-clock {
+    position: fixed;
+    top: 0;
+    right: 20px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+
+
+		 <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+     
+    <link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </style>
+	 
+    </style>
+</head>
+ 
+<body>
+
+ <!-- JavaScript pour l'horloge -->
+<script>
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // Ajoute un zéro devant les chiffres simples
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+        // Format de l'heure
+        var timeString = hours + ":" + minutes + ":" + seconds;
+
+        // Met à jour le contenu de l'élément HTML avec l'heure actuelle
+        document.getElementById("clock").innerHTML = timeString;
+    }
+
+    // Met à jour l'horloge toutes les secondes
+    setInterval(updateClock, 1000);
+
+    // Appelle la fonction pour la première fois afin d'afficher l'heure initiale
+    updateClock();
+</script>
+
+     
+  
+</head>
+<body>
+
+<div id="top-bar">
+    <!-- Ajoutez ici des liens, du texte, ou d'autres éléments que vous souhaitez dans la barre -->
+    <!-- Par exemple, vous pouvez ajouter un lien pour revenir à la page précédente -->
+    <a href="javascript:history.go(-1)">
+	 <div id="clock">
+        <div id="time">
+            <div>
+                <span id="hour"></span>
+                <span id="ampm"></span>
+            </div>
+            <div>
+                <span id="minutes"></span>
+                <span id="seconds"></span>
+            </div>
+        </div>
+    </div>
+	  
+	<div id="clock" class="top-bar-clock"></div>
+	<iframe src="layout.html" frameborder="0" style="width: 4%; height: 70%; position: absolute;"></iframe>
+</div>
+
+
+	 <script src="reveal.js/dist/reveal.js"></script>
+	 
+	 <script>
+	 
+ document.addEventListener("DOMContentLoaded", function() {
+        // Sélectionnez la barre de progression
+        var progressBar = document.querySelector('.progress-bar');
+
+        // Cachez la barre de progression après le chargement de la page
+        progressBar.style.display = 'none';
+    });
+	
+	 
+		
+	</script>
+
+    <script type="text/javascript">
+         function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Formatage pour ajouter un zéro devant les nombres < 10
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            // Affichage de l'horloge
+            document.getElementById('clock').innerHTML = hours + ':' + minutes + ':' + seconds;
+
+            // Actualisation toutes les secondes
+            setTimeout(updateClock, 1000);
+        }
+
+        // Démarrer l'horloge
+        updateClock();
+    </script>
+	
+	
+  <div class="content">
+    <header>
+	
+	  <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/v1/5c424d325ffd2085094e0de5/1547870225093-R8BGSAV7BH7PZJ4A95P6/2.png">
+	
+	  <script>
+      
+		
+	 </script>
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"></script>
+    
+
+	  <img src="https://v2.nl/wp-content/uploads/2023/02/chaos-computer-club.jpg" alt="Logo">
+	  
+	   
+		<div id="title-bar">
+        <h1>Math et Sciences ! </h1>
+    </header>
+
+    <nav>
+	<!-- Barre de recherche Google -->
+        
+		<div class="nav-link-container">
+        <a href="page1.html">Les math en général</a>
+		     </div>
+         <div class="nav-link-container">
+        <a href="page2.html">L'importance des maths</a>
+		</div>
+		 <div class="nav-link-container">
+        <a href="page3.html">Les formules de math</a>
+		</div>
+     <div class="nav-link-container">
+        <a href="page3.html">Commentaire</a>
+	     </div>
+		 </nav>
+	
+	
+	
+ <div class="grid-container">
+        <div class="section-wrapper">
+            <section>
+                <h1 class="text-box">Page 1</h1>
+				 <h1 class="text-box">Les math en général</h1>
+                <p class="text-box">This is the content of Page 1. You can write about various mathematical concepts and topics here.</p>
+                <img src="https://fthmb.tqn.com/JRqyIYUvFsxktwKwqkunaNPRdhs=/1500x1124/filters:fill(auto,1)/bellformula-56b749555f9b5829f8380dc8.jpg" alt="Math Image 1" width="400" height="250">
+                <p class="text-box">Pour plus d'information cliqué sur <a href="page1.html">ce lien</a>.</p>
+            </section>
+        </div>
+
+        <div class="section-wrapper">
+            <section>
+                <h1 class="text-box">Page 2</h1>
+				<h1 class="text-box">L'importance des maths</h1>
+                <p class="text-box">Voici le contenu de la page 2 intitulé L'importance des maths , dans cette page je parlerais de l'importance des math dans le monde , de , que se passerait t-il si les math n'existerait pas ? Quelle consequense sa pourrait posée sur la terre voire sur l'univers ?. </p>
+                <img src="https://d2oc3pyolp0fbe.cloudfront.net/local/cache-gd2/ddd258317327558b8d218d80acfeb419.jpg" alt="Math Image 2" width="400" height="240">
+                <p class="text-box">Pour plus d'information cliqué sur <a href="page2.html">ce lien</a>.</p>
+            </section>
+        </div>
+
+        <div class="section-wrapper">
+            <section>
+                <h1 class="text-box">Page 3</h1>
+		               <h1 class="text-box">Les formules de math</h1>
+                <p class="text-box">This is the content of Page 3. Learn about various mathematical formulas and their applications.</p>
+                <img src="https://cdn.mos.cms.futurecdn.net/BT4GR5JKJJTudF6kUGEqg7.jpg" alt="Math Image 3" width="100" height="240">
+                <p class="text-box">Pour plus d'information cliqué sur <a href="page3.html">ce lien</a>.</p>
+            </section>
+        </div>
+
+        <div class="section-wrapper">
+            <section>
+                <h1 class="text-box">Page 4</h1>
+				<h1 class="text-box"> Commentaire</h1>
+                <p class="text-box">This is the content of Page 4. Learn about various mathematical formulas and their applications.</p>
+                <img src="https://www.pratiques-sociales.org/wp-content/uploads/2017/09/Commentaires.png" alt="Math Image 3" width="100" height="240">
+				 <p class="text-box">Pour plus d'information cliqué sur <a href="page4.html">ce lien</a>.</p>
+            </section>
+        </div>
+
+      
+
+        <!-- Videos -->
+        <div class="video-row">
+            <div class="video-col">
+                <div class="video-container">
+                    <iframe width="100" height="50" src="https://www.youtube.com/embed/HEfHFsfGXjs" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-col">
+                <div class="video-container">
+                    <iframe width="100" height="50" src="https://www.youtube.com/embed/d_qvLDhkg00" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="video-row">
+            <div class="video-col">
+                <div class="video-container">
+                  <iframe width="100" height="240" src="https://www.youtube.com/embed/851U557j6HE" frameborder="0" allowfullscreen></iframe>
+</div
+                </div>
+            </div>
+		    <div class="video-col">
+                <div class="video-container">
+                    <iframe width="100" height="50" src="https://www.youtube.com/embed/EK32jo7i5LQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Navbar items en bas -->
+    <div id="navlist">
+	  <div>
+            <a href="#">Accueil</a>
+        <a href="#">Liens</a>
+        <a href="#">Services</a>
+        <a href="#">À propos</a>
+        <a href="#">Contacts</a>
+        </div>
+        <!-- Search bar right align -->
+        <div class="search">
+            <form action="https://www.google.com/search" method="GET" target="_blank">
+                <input type="text" name="q" placeholder=" Search Google" aria-label="Search Google" />
+                <button type="submit">
+                    <i class="fa fa-search" style="font-size: 18px;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+	 
+	 <div id="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15876.299766630007!2d-122.41941546318216!3d37.77492987395147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580c6ad841a59%3A0x8e211e15b7154cc6!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1642766530828!5m2!1sen!2sus" allowfullscreen></iframe>
+</div>
+ 
+		  <footer>
+        © 2024 Mon Site. Tous droits réservés.
+    </footer>
+	<div class="pagination">
+	<div class="pagination a">
+    <a href="#" class="arrow">&lt;</a>
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#" class="arrow">&gt;</a>
+	<div style="text-align: center; margin: 20px;">
+    <span style="font-size: 24px;">&larr; <!-- Flèche gauche --> </span>
+    <span>Page suivante</span>
+    <span style="font-size: 24px;">&rarr; <!-- Flèche droite --> </span>
+</div>
+
+     <div class="startup-animation">
+    <div class="progress-bar"></div>
+</div>
+    
+</body>
+</html>
+
+
